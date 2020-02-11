@@ -11,8 +11,8 @@ import hashlib
 
 WATCH_PATH = '/www/wwwroot/'  # 监控目录 web目录
 WATCH_FILES = ('.php','.phtml','.inc','.php3','.php4','.php5','.war','.jsp','.jspx','.asp','.aspx','.cer','.cdx','.asa','.ashx','.asmx','.cfm','.rar','.zip','.tar','.xz','.tbz','.tgz','.tbz2','.bz2','.gz')	#检查文件
-INDEX_FILES = "/www/wwwroot/http/"
-index_md5 = "f5932a7f8cd0ec4ff62c8f18be5cb5f3"
+INDEX_FILES = "/www/wwwroot/http/"	#此处为了防止web目录下的index.php被修改而设置，不需要此功能可注释掉此行
+index_md5 = "f5932a7f8cd0ec4ff62c8f18be5cb5f3" #此处为了防止web目录下的index.php被修改而设置，不需要此功能可注释掉此行
 
 
 if not WATCH_PATH:
@@ -81,21 +81,21 @@ def auto_compile(path='.'):
 
 #检查文件是否需要上传杀查毒
 def check_file(self):
-	if self == INDEX_FILES + "index.php" :
-		if file_md5(INDEX_FILES + "index.php") != index_md5 :
-			os.popen("tar -xvf " + INDEX_FILES + "index.php.tar.gz" + " -C " + INDEX_FILES).readlines()
-			print(time.strftime('%Y-%m-%d %H:%M:%S  ') + "文件" + self + "主页文件被修改,已还原!")
-		#else:
-		return
+	if self == INDEX_FILES + "index.php" : #此处为了防止web目录下的index.php被修改而设置，不需要此功能可注释掉此行
+		if file_md5(INDEX_FILES + "index.php") != index_md5 : #此处为了防止web目录下的index.php被修改而设置，不需要此功能可注释掉此行
+			os.popen("tar -xvf " + INDEX_FILES + "index.php.tar.gz" + " -C " + INDEX_FILES).readlines() #此处为了防止web目录下的index.php被修改而设置，不需要此功能可注释掉此行
+			print(time.strftime('%Y-%m-%d %H:%M:%S  ') + "文件" + self + "主页文件被修改,已还原!") #此处为了防止web目录下的index.php被修改而设置，不需要此功能可注释掉此行
+		#else: 
+		return #此处为了防止web目录下的index.php被修改而设置，不需要此功能可注释掉此行
 	if self.endswith(WATCH_FILES) :
 		if os.path.getsize(self) < 49.99*1024*1024 : 
 			scan_file(self)
 		else:
 			print(time.strftime('%Y-%m-%d %H:%M:%S  ') + "文件" + self + "大于50M,最大支持50M" )
 	else : 
-		if self.endswith('.txt') :
-			os.popen("rm -rf " + self).readlines()
-			print(time.strftime('%Y-%m-%d %H:%M:%S  ') + "文件" + self + "不允许创建txt文件,已删除" )
+		if self.endswith('.txt') :   #此处为禁止上传txt文件，不用此功能，请注释掉
+			os.popen("rm -rf " + self).readlines()  #此处为禁止上传txt文件，不用此功能，请注释掉
+			print(time.strftime('%Y-%m-%d %H:%M:%S  ') + "文件" + self + "不允许创建txt文件,已删除" ) #此处为禁止上传txt文件，不用此功能，请注释掉
 		else:			
 			print(time.strftime('%Y-%m-%d %H:%M:%S  ') + "文件" + self + "无需检测!" )
 
