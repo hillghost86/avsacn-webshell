@@ -1,0 +1,10 @@
+[Unit]
+Description=avscan Service
+After=multi-user.target
+ 
+[Service]
+Type=idle
+ExecStart= /bin/bash -c '/usr/bin/python3 -u /var/avscan/scan.py >> /var/avscan/scan.log'
+ 
+[Install]
+WantedBy=multi-user.target
