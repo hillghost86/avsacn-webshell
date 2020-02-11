@@ -1,6 +1,7 @@
 # avscan-webshell
 ## 什么是 avscan-webshell
-Anti-Virus webShell 是一个pythoon3 版本的webshell查杀工具, 是一个通过pyinotify检测web目录文件变动，通过百度的WEBDIR+ https://scanner.baidu.com/ API 上传被改动的文件，发现病毒进行直接删除的工具
+avscan-webshell 全称 Anti-Virus Scan webShell 
+是一个pythoon3 的webshell查杀脚本工具, 通过pyinotify模块检测web目录的文件变动，通过百度的WEBDIR+ https://scanner.baidu.com/ API 上传被改动的文件，发现病毒进行直接删除的工具
 
 ## avscan-webshell 安装
 + 在 /var 下创建 avscan目录，下载 avscan.py 至 /var/avscan 目录下
