@@ -34,5 +34,6 @@ systemctl start avscan && systemctl enable avscan
 + 一个朋友说最近他的网站总是被挂马，而且网站源码是别人写的，代码写的并不是太好，首页总是被修改.看了下代码写的也不太敢恭维，网站代码我也懒得去找入侵漏洞，就写了这个程序。
 + 通过 pyinotify 模块监控web目录，发现被修改过的php文件，使用https://scanner.baidu.com 的API上传所有被修改过的文件，发现被修改过文件是webshell，则删除此文件。
 + 由于index.php总是被修改，代码中增加了自动覆盖index.php的代码，通过index.php.tar.gz去覆盖index.php。
++ 网站代码不允许上传php文件，黑客利用上传漏洞上传txt文件，然后重命名为php文件，也是临时想到了发现新修改的txt文件直接删除的方法去限制txt文件上传。
 + 第一次写python，代码写的比较简陋
 
