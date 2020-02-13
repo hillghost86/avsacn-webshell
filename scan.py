@@ -94,7 +94,7 @@ def check_file(self):
 			print(time.strftime('%Y-%m-%d %H:%M:%S  ') + "文件" + self + "大于50M,最大支持50M" )
 	else : 
 		if self.endswith('.txt') :   #此处为禁止上传txt文件，不用此功能，请注释掉
-			os.popen("rm -rf " + self).readlines()  #此处为禁止上传txt文件，不用此功能，请注释掉
+			os.remove(self)  #此处为禁止上传txt文件，不用此功能，请注释掉
 			print(time.strftime('%Y-%m-%d %H:%M:%S  ') + "文件" + self + "不允许创建txt文件,已删除" ) #此处为禁止上传txt文件，不用此功能，请注释掉
 		else:			
 			print(time.strftime('%Y-%m-%d %H:%M:%S  ') + "文件" + self + "无需检测!" )
@@ -124,7 +124,7 @@ def scan_file(file_path):
 		if i == 10:
 			break  # 防止死循环,最大等待10个循环就退出
 	if sf['data'][0]['descr'] != None or sf['detected'] != 0:
-		os.popen("rm -rf " + file_path).readlines()
+		os.remove(file_path)
 		print(time.strftime('%Y-%m-%d %H:%M:%S  ') + "文件"  + file_path + "报毒" + sf['data'][0]['descr'] + ", 已删除!")
 	else:
 		print(time.strftime('%Y-%m-%d %H:%M:%S  ')  + "文件" + file_path + "安全")
